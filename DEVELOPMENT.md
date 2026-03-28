@@ -25,7 +25,7 @@ This project is linked to local n8n via `npm link`:
 npm link
 
 # In n8n source directory (adjust path as needed)
-npm link n8n-nodes-docker
+npm link n8n-nodes-docker-api
 ```
 
 After changes, rebuild and restart n8n:

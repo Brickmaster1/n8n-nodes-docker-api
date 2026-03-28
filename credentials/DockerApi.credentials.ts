@@ -6,7 +6,7 @@ import {
 export class DockerApi implements ICredentialType {
   name = 'dockerApi';
   displayName = 'Docker API';
-  documentationUrl = 'https://github.com/YOUR_USERNAME/n8n-nodes-docker';
+  documentationUrl = 'https://github.com/ramygamal231/n8n-nodes-docker-api';
   properties: INodeProperties[] = [
     {
       displayName: 'Connection Mode',

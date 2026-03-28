@@ -1,4 +1,4 @@
-# Contributing to n8n Docker Nodes
+# Contributing to n8n-nodes-docker-api
 
 Thank you for considering contributing to this project! This guide will help you get started.
 
@@ -13,8 +13,8 @@ Thank you for considering contributing to this project! This guide will help you
 ### 1. Fork and Clone
 
 ```bash
-git clone https://github.com/ramygamal231/n8n-nodes-docker.git
-cd n8n-nodes-docker
+git clone https://github.com/ramygamal231/n8n-nodes-docker-api.git
+cd n8n-nodes-docker-api
 ```
 
 ### 2. Create a Feature Branch
