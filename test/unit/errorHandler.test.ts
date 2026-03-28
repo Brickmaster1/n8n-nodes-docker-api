@@ -1,0 +1,81 @@
+import { translateDockerError } from '../../nodes/Docker/helpers/errorHandler';
+
+describe('translateDockerError', () => {
+  it('handles ECONNREFUSED error', () => {
+    const error = new Error('connect ECONNREFUSED /var/run/docker.sock');
+    const result = translateDockerError(error);
+    expect(result).toContain('Cannot connect to Docker daemon');
+  });
+
+  it('handles ENOENT docker.sock error', () => {
+    const error = new Error('ENOENT: no such file or directory, unix connect /var/run/docker.sock');
+    const result = translateDockerError(error);
+    expect(result).toContain('Docker socket not found');
+  });
+
+  it('handles permission denied error', () => {
+    const error = new Error('permission denied while trying to connect to the Docker daemon socket');
+    const result = translateDockerError(error);
+    expect(result).toContain('Permission denied accessing Docker socket');
+  });
+
+  it('handles No such container error', () => {
+    const error = new Error('No such container: abc123def456');
+    const result = translateDockerError(error);
+    expect(result).toContain('Container not found');
+  });
+
+  it('handles is not running error', () => {
+    const error = new Error('Container abc123def456 is not running');
+    const result = translateDockerError(error);
+    expect(result).toContain('Container is not running');
+  });
+
+  it('handles already started error', () => {
+    const error = new Error('Container abc123def456 is already started');
+    const result = translateDockerError(error);
+    expect(result).toContain('Container is already running');
+  });
+
+  it('handles 404 error', () => {
+    const error = new Error('Error response from daemon: 404 Not Found');
+    const result = translateDockerError(error);
+    expect(result).toContain('Resource not found');
+  });
+
+  it('handles 409 error', () => {
+    const error = new Error('Error response from daemon: 409 Conflict');
+    const result = translateDockerError(error);
+    expect(result).toContain('Conflict');
+  });
+
+  it('handles timeout error', () => {
+    const error = new Error('Connection timeout');
+    const result = translateDockerError(error);
+    expect(result).toContain('Connection timed out');
+  });
+
+  it('handles ETIMEDOUT error', () => {
+    const error = new Error('connect ETIMEDOUT 192.168.1.100:2375');
+    const result = translateDockerError(error);
+    expect(result).toContain('Connection timed out');
+  });
+
+  it('returns fallback message for unknown errors', () => {
+    const error = new Error('Some unknown error occurred');
+    const result = translateDockerError(error);
+    expect(result).toBe('Some unknown error occurred');
+  });
+
+  it('handles non-Error objects', () => {
+    const error = 'String error message';
+    const result = translateDockerError(error);
+    expect(result).toBe('String error message');
+  });
+
+  it('handles undefined error gracefully', () => {
+    const error = undefined;
+    const result = translateDockerError(error);
+    expect(result).toBe('undefined');
+  });
+});

@@ -1,0 +1,30 @@
+# Source files (users get compiled dist/)
+*.ts
+credentials/**/*.ts
+nodes/**/*.ts
+utils/**/*.ts
+
+# Test files (both source and compiled)
+test/
+dist/test/
+
+# Dev config
+.eslintrc.js
+.prettierrc
+tsconfig.json
+jest.config.js
+.gitignore
+.github/
+
+# Dev docs
+DEVELOPMENT.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+CHANGELOG.md
+n8n-docker-node-plan.md
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/**/*.map
