@@ -74,7 +74,7 @@ export const createContainerFields: INodeProperties[] = [
       },
     },
     default: '',
-    description: 'Custom name for the container',
-    placeholder: 'my-container',
+    description: 'Command to start the container with',
+    placeholder: '/bin/bash',
   },
 ];
