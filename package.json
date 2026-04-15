@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-docker-api",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Interact with Docker via direct API (no Portainer required) — manage containers, stream logs, and automate infrastructure workflows",
   "keywords": [
     "n8n",
